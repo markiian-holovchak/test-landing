@@ -25,10 +25,57 @@
       <a href="#docs">Docs</a>
     </nav>
     <div class="header__actions">
-      <a href="#" class="btn btn--ghost">Sign in</a>
-      <a href="#" class="btn btn--primary">Start free</a>
+      <a href="#" class="btn btn--ghost" data-auth-open="signin">Sign in</a>
+      <a href="#" class="btn btn--primary" data-auth-open="signup">Start free</a>
     </div>
   </header>
+
+  <div class="auth-modal" id="authModal" hidden>
+    <div class="auth-modal__backdrop" data-auth-close></div>
+    <div class="auth-modal__card">
+      <button class="auth-modal__close" data-auth-close aria-label="Close">×</button>
+
+      <form class="auth-form" id="signinForm" data-auth-view="signin">
+        <h3>Sign in</h3>
+        <label>Email<input type="email" name="email" required></label>
+        <label>Password<input type="password" name="password" required></label>
+        <p class="auth-form__msg" data-msg></p>
+        <button type="submit" class="btn btn--primary">Sign in</button>
+        <p class="auth-form__switch">
+          <a href="#" data-auth-open="recover">Forgot password?</a> ·
+          <a href="#" data-auth-open="signup">Need an account?</a>
+        </p>
+      </form>
+
+      <form class="auth-form" id="signupForm" data-auth-view="signup" hidden>
+        <h3>Create account</h3>
+        <label>Email<input type="email" name="email" required></label>
+        <label>Password<input type="password" name="password" required minlength="8"></label>
+        <p class="auth-form__msg" data-msg></p>
+        <button type="submit" class="btn btn--primary">Start free</button>
+        <p class="auth-form__switch">
+          <a href="#" data-auth-open="signin">Already have an account?</a>
+        </p>
+      </form>
+
+      <form class="auth-form" id="recoverForm" data-auth-view="recover" hidden>
+        <h3>Reset password</h3>
+        <label>Email<input type="email" name="email" required></label>
+        <p class="auth-form__msg" data-msg></p>
+        <button type="submit" class="btn btn--primary">Send reset link</button>
+        <p class="auth-form__switch">
+          <a href="#" data-auth-open="signin">Back to sign in</a>
+        </p>
+      </form>
+
+      <form class="auth-form" id="newPasswordForm" data-auth-view="newPassword" hidden>
+        <h3>Set a new password</h3>
+        <label>New password<input type="password" name="password" required minlength="8"></label>
+        <p class="auth-form__msg" data-msg></p>
+        <button type="submit" class="btn btn--primary">Set password</button>
+      </form>
+    </div>
+  </div>
 
   <main>
     <section class="hero">
@@ -153,5 +200,7 @@
     </div>
     <p class="footer__copy">© 2026 NovaPulse Inc. All rights reserved.</p>
   </footer>
+
+  <script src="auth.js"></script>
 </body>
 </html>
