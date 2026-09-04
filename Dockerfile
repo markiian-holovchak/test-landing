@@ -7,6 +7,7 @@ COPY auth.js /usr/share/nginx/html/auth.js
 COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 
 ENV PORT=8080
+ENV FEATURE_SIGNIN_ENABLED=false
 
 EXPOSE 8080
 

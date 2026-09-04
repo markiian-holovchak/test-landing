@@ -1,6 +1,13 @@
 (function () {
   const AUTH_BASE = '/__meta/auth';
 
+  const flags = window.__FLAGS || {};
+  if (!flags.signInEnabled) {
+    document
+      .querySelectorAll('[data-feature="signin"]')
+      .forEach((el) => el.remove());
+  }
+
   const modal = document.getElementById('authModal');
   const forms = {
     signin: document.getElementById('signinForm'),

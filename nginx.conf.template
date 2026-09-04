@@ -5,6 +5,11 @@ server {
     root /usr/share/nginx/html;
     index index.html;
 
+    location = /__flags.js {
+        default_type application/javascript;
+        return 200 "window.__FLAGS={signInEnabled:${FEATURE_SIGNIN_ENABLED}};";
+    }
+
     location / {
         try_files $uri $uri/ /index.html;
     }
